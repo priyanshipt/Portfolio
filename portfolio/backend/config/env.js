@@ -24,7 +24,7 @@ export const env = {
   mail: {
     host: process.env.SMTP_HOST || '',
     port: Number(process.env.SMTP_PORT) || 465,
-    secure: process.env.SMTP_SECURE !== 'false',
+    secure: process.env.SMTP_SECURE === 'true',
     user: process.env.SMTP_USER || '',
     pass: process.env.SMTP_PASS || '',
     to: process.env.MAIL_TO || process.env.SMTP_USER || '',
@@ -32,5 +32,9 @@ export const env = {
 };
 
 export const mailConfigured = Boolean(
-  env.mail.host && env.mail.user && env.mail.pass && env.mail.to
+  env.mail.host &&
+  env.mail.port &&
+  env.mail.user &&
+  env.mail.pass &&
+  env.mail.to
 );
